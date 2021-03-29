@@ -1,0 +1,47 @@
+<p>login works!</p>
+<div>
+    <button class="btn btn-info" (click)="changestatus()">{{status?"hide":"show"}}</button>
+</div>
+<h1 *ngIf=status>welcome</h1>
+
+<ul *ngFor="let v of numbers">
+    <li>{{v}}</li>
+</ul>
+
+<!-- angular forms-->
+<h1>Angular Form</h1>
+<form #ref="ngForm" (ngSubmit)="senddata(ref)">
+
+ <div class="form-group">
+     <label for="un">Username</label>
+     <input type="text" name="username" id="un" ngModel required class="form-control" #ref1="ngModel">
+ </div>
+<div *ngIf="ref1.touched && ref1.invalid" class="alert alert-danger">
+    *username is required
+</div>
+ <div class="form-group">
+     <label for="pw">password</label>
+     <input type="password" name="password" id="pw" ngModel class="form-control" required pattern="\d[abc]\d.*" #ref2="ngModel">
+ </div>
+ <div *ngIf="ref2.invalid && (ref2.dirty || ref2.touched)" class="alert alert-danger" >
+     <div *ngIf="ref2.errors?.required">
+         password is required
+     </div>
+     <div *ngIf="ref2.errors?.pattern">
+         pattern is not matched
+     </div>
+ </div>
+ <button type="submit" class="btn btn-warning">submit</button>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
